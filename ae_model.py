@@ -53,9 +53,9 @@ def decoder1_vgg16(encoder): # use single Transpose layer
 
     d5 = Conv2D(3, (3, 3), activation='sigmoid', padding="same")(d4) # reconstruction
 
-    d6 = Flatten()(d5)
+    # d6 = Flatten()(d5)
     
-    return d6
+    return d5
 
 def decoder2_vgg16(encoder): # use Transpose (with activation)+ Conv2d
     d0 = Conv2DTranspose(512, (2, 2), strides=2, activation='relu', padding="same")(encoder)
