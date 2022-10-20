@@ -98,7 +98,7 @@ def decoder3_vgg16(encoder): # use Transpose (without activation)+ Conv2d
     return d
 
 
-def encoder1_vgg16(input_shape, num_class):
+def encoder1_vgg16(input_shape, num_class, act):
     e1 = conv_block1(input_shape, 64)
     m1 = MaxPooling2D((2, 2), strides=(2, 2))(e1)
     
@@ -117,5 +117,5 @@ def encoder1_vgg16(input_shape, num_class):
     f = Flatten()(m5)
     d1 = Dense(4096, activation='relu')(f)
     d2 = Dense(4096, activation='relu')(d1)
-    output = Dense(num_class, activation='softmax')(d2)
+    output = Dense(num_class, activation=act)(d2)
     return output
